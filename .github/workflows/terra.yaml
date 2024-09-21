@@ -32,6 +32,9 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Grant execution permission for terra.sh
+        run: chmod +x ./scripts/terra.sh
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
