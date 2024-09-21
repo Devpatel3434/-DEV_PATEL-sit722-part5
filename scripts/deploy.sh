@@ -21,4 +21,7 @@ set -u # or set -o nounset
 
 az aks get-credentials --resource-group $REGISTRY_UN --name $REGISTRY_UN --overwrite-existing
 
+az aks update --resource-group $REGISTRY_UN --name $REGISTRY_UN --attach-acr $REGISTRY_UN
+
+
 envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
