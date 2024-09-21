@@ -1,0 +1,28 @@
+#version: '3'
+services:
+
+  book-catalog:
+    image: task9-b:1
+    build: 
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    container_name: task9-b
+    ports:
+      - "9494:9494"
+    environment:
+      # - PORT=9494
+      - DATABASE_URL=postgresql://task_9_user:59r77M2CaX5P1y02ibNyGPcSyDPewoGv@dpg-crnd19t6l47c73adrn20-a.oregon-postgres.render.com/task_9
+    restart: "no"
+
+  inventory-management:
+    image: task9-i:1
+    build: 
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    container_name: task9-i
+    ports:
+     - "9898:9898"
+    environment:
+      # - PORT=9898
+      - DATABASE_URL=postgresql://task_9_user:59r77M2CaX5P1y02ibNyGPcSyDPewoGv@dpg-crnd19t6l47c73adrn20-a.oregon-postgres.render.com/task_9
+    restart: "no"
