@@ -24,8 +24,7 @@ jobs:
       creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     steps:
-      
-      # Checks-out your repository under $GITHUB_WORKSPACE.
+
       - uses: actions/checkout@v3
 
       - name: Azure Login
@@ -41,8 +40,6 @@ jobs:
         with:
           terraform_version: 1.9.05  
 
-      #
-      # Initialize commands
-      #
+     
       - name: Terraform 
         run: ./scripts/terra.sh

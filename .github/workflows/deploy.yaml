@@ -13,11 +13,8 @@ on:
   #
   #push: 
    # branches:
-   #   - main
+    #  - main
 
-  #
-  # Allows deployment to be invoked manually through the GitHub Actions user interface.
-  #
   workflow_dispatch: 
 
 jobs:
@@ -33,30 +30,18 @@ jobs:
 
     steps:
       
-      # Checks-out your repository under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
 
       - name: Grant execution permission for terra.sh
         run: chmod -R +x ./scripts/
-      #
-      # Builds the Docker image.
-      #
+     
       - name: Build
         run: ./scripts/build-image.sh
 
-      #
-      # Publishes the Docker image to the container registry.
-      #
+    
       - name: Publish
         run: ./scripts/push-image.sh
 
-      #
-      # Installs Kubectl and connects it to the cluster.
-      #
-      # https://github.com/marketplace/actions/kubernetes-cli-kubectl
-      #
-      
-      
       - uses: tale/kubectl-action@v1
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
@@ -69,8 +54,5 @@ jobs:
           cluster-name: ${{ secrets.REGISTRY_UNS }}
           resource-group: ${{ secrets.REGISTRY_UN }}
 
-      #
-      # Expands the configuration template and deploys the microservice.
-      #
       - name: Deploy
         run: ./scripts/deploy.sh
