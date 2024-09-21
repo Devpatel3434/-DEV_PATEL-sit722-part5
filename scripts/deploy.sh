@@ -25,7 +25,7 @@ az acr update --name $REGISTRY_UN --sku Standard
 
 az acr update --name $REGISTRY_UN --anonymous-pull-enabled true
 
-az aks update --resource-group $REGISTRY_UN --name $REGISTRY_UN --attach-acr $REGISTRY_UN
+#az aks update --resource-group $REGISTRY_UN --name $REGISTRY_UN --attach-acr $REGISTRY_UN
 
 
 envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
