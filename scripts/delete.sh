@@ -16,6 +16,8 @@ set -u # or set -o nounset
 : "$CONTAINER_REGISTRY"
 : "$VERSION"
 
+az aks get-credentials --resource-group $REGISTRY_UN --name $REGISTRY_UN --overwrite-existing
+
 envsubst < ./scripts/kubernetes/deploy.yaml | kubectl delete -f -
 
 cd terra
