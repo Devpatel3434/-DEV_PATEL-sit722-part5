@@ -43,5 +43,8 @@ jobs:
       #
       # Expands the configuration template and deploys the microservice.
       #
+      - name: Grant execution permission for terra.sh
+        run: chmod -R +x ./scripts/
+        
       - name: Delete
         run: ./scripts/delete.sh

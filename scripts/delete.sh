@@ -18,6 +18,10 @@ set -u # or set -o nounset
 
 envsubst < ./scripts/kubernetes/deploy.yaml | kubectl delete -f -
 
+cd terra
+
 terraform destroy -auto-approve
+
+cd ..
 
 docker compose down
