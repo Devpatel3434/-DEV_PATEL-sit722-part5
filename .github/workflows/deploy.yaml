@@ -55,11 +55,20 @@ jobs:
       #
       # https://github.com/marketplace/actions/kubernetes-cli-kubectl
       #
+      
+      
       - uses: tale/kubectl-action@v1
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
           kubectl-version: v1.24.2
       
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          cluster-name: ${{ secrets.REGISTRY_UNS }}
+          resource-group: ${{ secrets.REGISTRY_UN }}
+
       #
       # Expands the configuration template and deploys the microservice.
       #
