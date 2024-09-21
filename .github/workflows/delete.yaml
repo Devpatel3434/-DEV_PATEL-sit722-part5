@@ -43,8 +43,14 @@ jobs:
       #
       # Expands the configuration template and deploys the microservice.
       #
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
       - name: Grant execution permission for terra.sh
         run: chmod -R +x ./scripts/
-        
+
       - name: Delete
         run: ./scripts/delete.sh
