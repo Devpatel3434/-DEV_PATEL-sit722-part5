@@ -17,3 +17,7 @@ set -u # or set -o nounset
 : "$VERSION"
 
 envsubst < ./scripts/kubernetes/deploy.yaml | kubectl delete -f -
+
+terraform destroy -auto-approve
+
+docker compose down
