@@ -35,6 +35,9 @@ jobs:
       
       # Checks-out your repository under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
+
+      - name: Grant execution permission for terra.sh
+        run: chmod -R +x ./scripts/
       #
       # Builds the Docker image.
       #
